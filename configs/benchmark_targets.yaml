@@ -1,0 +1,220 @@
+benchmark:
+  id: "targetintel_io_internal_v0_1"
+  version: "0.1.0"
+  title: "TargetIntel-IO therapeutic-intent sanity benchmark"
+  disease_context: "Anti-PD-1-resistant melanoma"
+
+  description: >
+    Curated internal benchmark used to test whether TargetIntel-IO assigns
+    biologically coherent stable roles and therapeutic-intent-specific rankings
+    to representative melanoma and immune-resistance targets.
+
+  validation_level: "Internal rule-based sanity validation"
+
+  disclaimer: >
+    This benchmark is intended to test software behavior, rule consistency,
+    therapeutic-intent discrimination, and expected ranking patterns. It is not
+    an independent clinical gold standard and does not establish therapeutic
+    efficacy or biomarker validity.
+
+  modes:
+    - "antibody_io"
+    - "biomarker"
+    - "small_molecule"
+
+  top_k_values:
+    - 5
+    - 10
+    - 20
+
+
+groups:
+
+  checkpoint_combination:
+    label: "Immune-checkpoint combination targets"
+    expected_role: "anti-PD-1 combination target"
+    expected_primary_intent: "antibody_io"
+    acceptable_intents:
+      - "antibody_io"
+    targets:
+      - "CTLA4"
+      - "PDCD1"
+      - "CD274"
+      - "LAG3"
+      - "TIGIT"
+      - "HAVCR2"
+
+  antigen_presentation_loss:
+    label: "Antigen-presentation resistance biomarkers"
+    expected_role: "antigen-presentation resistance biomarker"
+    expected_primary_intent: "biomarker"
+    acceptable_intents:
+      - "biomarker"
+    targets:
+      - "B2M"
+      - "HLA-A"
+      - "HLA-B"
+      - "TAP1"
+      - "TAP2"
+
+  ifng_resistance:
+    label: "IFN-gamma resistance biomarkers"
+    expected_role: "IFN-gamma resistance mechanism / biomarker"
+    expected_primary_intent: "biomarker"
+    acceptable_intents:
+      - "biomarker"
+    targets:
+      - "JAK1"
+      - "JAK2"
+      - "IFNGR1"
+      - "STAT1"
+      - "IRF1"
+
+  myeloid_suppression:
+    label: "Myeloid and suppressive TME targets"
+    expected_role: "myeloid/TME anti-PD-1 combination target"
+    expected_primary_intent: "antibody_io"
+    acceptable_intents:
+      - "antibody_io"
+      - "small_molecule"
+    targets:
+      - "CSF1R"
+      - "TREM2"
+      - "MARCO"
+      - "LILRB1"
+      - "LILRB2"
+      - "MERTK"
+
+  metabolic_surface_io:
+    label: "Surface immunometabolic targets"
+    expected_role: "metabolic immune-suppression target"
+    expected_primary_intent: "antibody_io"
+    acceptable_intents:
+      - "antibody_io"
+    targets:
+      - "NT5E"
+      - "ENTPD1"
+
+  metabolic_enzymatic_small_molecule:
+    label: "Enzymatic immunometabolic targets"
+    expected_role: "metabolic immune-suppression target"
+    expected_primary_intent: "small_molecule"
+    acceptable_intents:
+      - "small_molecule"
+      - "antibody_io"
+    targets:
+      - "IDO1"
+      - "ARG1"
+
+  stromal_ligand_io:
+    label: "Stromal and immune-exclusion ligand targets"
+    expected_role: "immune-exclusion / stromal-resistance candidate"
+    expected_primary_intent: "antibody_io"
+    acceptable_intents:
+      - "antibody_io"
+    targets:
+      - "TGFB1"
+      - "CXCL12"
+
+  stromal_receptor_small_molecule:
+    label: "Stromal and immune-exclusion receptor targets"
+    expected_role: "immune-exclusion / stromal-resistance candidate"
+    expected_primary_intent: "small_molecule"
+    acceptable_intents:
+      - "small_molecule"
+      - "antibody_io"
+    targets:
+      - "TGFBR1"
+      - "CXCR4"
+
+  melanoma_plasticity_small_molecule:
+    label: "Melanoma plasticity intervention targets"
+    expected_role: "melanoma plasticity / resistance-associated marker"
+    expected_primary_intent: "small_molecule"
+    acceptable_intents:
+      - "small_molecule"
+      - "biomarker"
+    targets:
+      - "AXL"
+
+  melanoma_plasticity_biomarker:
+    label: "Melanoma plasticity biomarkers"
+    expected_role: "melanoma plasticity / resistance-associated marker"
+    expected_primary_intent: "biomarker"
+    acceptable_intents:
+      - "biomarker"
+    targets:
+      - "WNT5A"
+      - "NGFR"
+
+  tumor_intrinsic_small_molecule:
+    label: "Tumor-intrinsic small-molecule targets"
+    expected_role: "tumor-intrinsic driver / small-molecule target"
+    expected_primary_intent: "small_molecule"
+    acceptable_intents:
+      - "small_molecule"
+    targets:
+      - "BRAF"
+      - "MAP2K1"
+      - "MAP2K2"
+      - "KIT"
+      - "CDK4"
+
+  poor_direct_targets:
+    label: "Biologically relevant but poor direct therapeutic targets"
+    expected_role: "tumor-intrinsic driver / poor direct therapeutic target"
+    expected_primary_intent: "biomarker"
+    acceptable_intents:
+      - "biomarker"
+    targets:
+      - "CDKN2A"
+      - "PTEN"
+      - "NF1"
+      - "BAP1"
+      - "TP53"
+
+  tumor_intrinsic_biomarkers:
+    label: "Tumor-intrinsic pathway biomarkers"
+    expected_role: "tumor-intrinsic driver / biomarker"
+    expected_primary_intent: "biomarker"
+    acceptable_intents:
+      - "biomarker"
+      - "small_molecule"
+    targets:
+      - "NRAS"
+      - "MITF"
+      - "TERT"
+
+  immune_context:
+    label: "Immune-context biomarkers"
+    expected_role: "immune-context marker"
+    expected_primary_intent: "biomarker"
+    acceptable_intents:
+      - "biomarker"
+    targets:
+      - "CD8A"
+      - "GZMB"
+      - "PRF1"
+      - "CXCL9"
+
+  treg_suppression:
+    label: "Treg-associated suppressive targets and markers"
+    expected_role: "Treg-suppression marker / possible IO-combination target"
+    expected_primary_intent: "antibody_io"
+    acceptable_intents:
+      - "antibody_io"
+      - "biomarker"
+    targets:
+      - "FOXP3"
+      - "IL2RA"
+      - "TNFRSF18"
+
+  context_controls:
+    label: "Melanoma-associated context controls"
+    expected_role: "unclear / low-confidence candidate"
+    expected_primary_intent: "none"
+    acceptable_intents: []
+    targets:
+      - "GNAQ"
+      - "GNA11"
+      - "SLC24A5"
