@@ -1,5 +1,7 @@
 # TargetIntel-IO
 
+[![Tests](https://github.com/rsolerortuno/TargetIntel-IO/actions/workflows/tests.yml/badge.svg)](https://github.com/rsolerortuno/TargetIntel-IO/actions/workflows/tests.yml)
+
 **Explainable therapeutic-intent-aware target triage for anti-PD-1-resistant melanoma**
 
 TargetIntel-IO is a transparent, rule-based translational bioinformatics framework for prioritizing and classifying candidate genes in **anti-PD-1-resistant melanoma**.
@@ -888,3 +890,57 @@ A citation file will be added in a future release.
 ```text
 TargetIntel-IO: Explainable therapeutic-intent-aware target triage for anti-PD-1-resistant melanoma.
 ```
+
+## Internal therapeutic-intent benchmark
+
+TargetIntel-IO includes a curated 56-target benchmark for internal,
+rule-based sanity validation across three therapeutic intents:
+
+- antibody and immuno-oncology combination targets;
+- biomarkers and resistance mechanisms;
+- small-molecule intervention targets.
+
+The benchmark target universe combines the top melanoma-associated targets
+retrieved from Open Targets with all curated benchmark genes. This separates
+external retrieval coverage from TargetIntel-IO evaluation coverage.
+
+### Current benchmark results
+
+| Metric | Result |
+|---|---:|
+| Benchmark targets evaluated | 56 / 56 |
+| TargetIntel evaluation coverage | 100% |
+| Open Targets top-300 retrieval coverage | 44.6% |
+| Stable-role accuracy | 100% |
+| Strict primary-intent accuracy | 91.1% |
+| Acceptable-intent accuracy | 100% |
+| Cross-intent specificity | 90.6% |
+| Control not-prioritized rate | 100% |
+| Mean top-10 recall | 58.1% |
+| Mean top-20 recall | 79.5% |
+
+The five strict intent disagreements are therapeutically plausible alternative
+interpretations accepted by the benchmark:
+
+- `FOXP3`: biomarker instead of antibody/IO;
+- `MITF` and `TERT`: small-molecule or pathway intervention instead of biomarker;
+- `CXCR4` and `TGFBR1`: antibody/IO instead of small molecule.
+
+These results demonstrate consistency between the curated reasoning rules and
+the expected therapeutic-intent categories. They do not constitute independent
+clinical validation or evidence of therapeutic efficacy.
+
+### Run the benchmark
+
+Build the augmented benchmark universe:
+
+    python scripts/09_build_benchmark_universe.py       --page-size 100       --max-pages 3
+
+Run the benchmark:
+
+    python scripts/08_run_benchmark.py       --input results/benchmark/ranked_targets_benchmark_universe.csv       --config configs/benchmark_targets.yaml       --outdir results/benchmark       --show-missing       --show-errors
+
+### Continuous integration
+
+The GitHub Actions workflow validates package imports, Python syntax, YAML
+configurations, and unit tests on every push and pull request to `main`.
