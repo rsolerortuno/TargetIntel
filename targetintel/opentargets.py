@@ -22,15 +22,15 @@ from targetintel.cache import get_or_fetch_json
 
 OPEN_TARGETS_GRAPHQL_URL = "https://api.platform.opentargets.org/api/v4/graphql"
 
-# EFO_0000756 is melanoma in the Open Targets / EFO disease ontology.
-DEFAULT_MELANOMA_EFO_ID = "MONDO_0005105"
+# MONDO_0005105 is melanoma in the Open Targets / MONDO disease ontology.
+DEFAULT_MELANOMA_DISEASE_ID = "MONDO_0005105"
 
 DEFAULT_CACHE_PATH = Path("data/cache/opentargets_melanoma_targets.json")
 
 
 ASSOCIATED_TARGETS_QUERY = """
-query associatedTargets($efoId: String!, $index: Int!, $size: Int!) {
-  disease(efoId: $efoId) {
+query associatedTargets($mondoId: String!, $index: Int!, $size: Int!) {
+  disease(mondoId: $mondoId) {
     id
     name
     associatedTargets(
@@ -86,7 +86,7 @@ def run_graphql_query(
 
 
 def fetch_associated_targets_page(
-    efo_id: str,
+    mondo_id: str,
     index: int = 0,
     size: int = 100,
 ) -> dict[str, Any]:
@@ -94,7 +94,7 @@ def fetch_associated_targets_page(
     Fetch one page of disease-associated targets from Open Targets.
     """
     variables = {
-        "efoId": efo_id,
+        "mondoId": mondo_id,
         "index": index,
         "size": size,
     }
@@ -106,7 +106,7 @@ def fetch_associated_targets_page(
 
 
 def fetch_associated_targets(
-    efo_id: str = DEFAULT_MELANOMA_EFO_ID,
+    mondo_id: str = DEFAULT_MELANOMA_DISEASE_ID,
     page_size: int = 100,
     max_pages: int = 3,
 ) -> dict[str, Any]:
@@ -115,8 +115,8 @@ def fetch_associated_targets(
 
     Parameters
     ----------
-    efo_id:
-        Disease EFO ID.
+    mondo_id:
+        Disease MONDO ID.
     page_size:
         Number of targets per page.
     max_pages:
@@ -133,7 +133,7 @@ def fetch_associated_targets(
 
     for page_index in range(max_pages):
         data = fetch_associated_targets_page(
-            efo_id=efo_id,
+            mondo_id=mondo_id,
             index=page_index,
             size=page_size,
         )
@@ -141,7 +141,7 @@ def fetch_associated_targets(
         disease = data.get("disease")
 
         if disease is None:
-            raise ValueError(f"No disease returned for EFO ID: {efo_id}")
+            raise ValueError(f"No disease returned for MONDO ID: {mondo_id}")
 
         associated_targets = disease["associatedTargets"]
 
@@ -171,7 +171,7 @@ def fetch_associated_targets(
 
 
 def fetch_associated_targets_cached(
-    efo_id: str = DEFAULT_MELANOMA_EFO_ID,
+    mondo_id: str = DEFAULT_MELANOMA_DISEASE_ID,
     page_size: int = 100,
     max_pages: int = 3,
     cache_path: str | Path = DEFAULT_CACHE_PATH,
@@ -183,14 +183,14 @@ def fetch_associated_targets_cached(
     return get_or_fetch_json(
         cache_path=cache_path,
         fetch_fn=lambda: fetch_associated_targets(
-            efo_id=efo_id,
+            mondo_id=mondo_id,
             page_size=page_size,
             max_pages=max_pages,
         ),
         refresh=refresh,
         source="Open Targets Platform GraphQL API",
         metadata={
-            "efo_id": efo_id,
+            "mondo_id": mondo_id,
             "page_size": page_size,
             "max_pages": max_pages,
         },
@@ -263,7 +263,7 @@ def get_melanoma_associated_targets(
     Fetch melanoma-associated targets from Open Targets and return a dataframe.
     """
     payload = fetch_associated_targets_cached(
-        efo_id=DEFAULT_MELANOMA_EFO_ID,
+        mondo_id=DEFAULT_MELANOMA_DISEASE_ID,
         page_size=page_size,
         max_pages=max_pages,
         refresh=refresh,
