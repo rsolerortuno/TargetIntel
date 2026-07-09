@@ -1,0 +1,30 @@
+{
+  "benchmark_config": "configs/benchmark_targets.yaml",
+  "benchmark_id": "targetintel_io_internal_v0_1",
+  "benchmark_version": "0.1.0",
+  "files": {
+    "benchmark_predictions.csv": {
+      "sha256": "6126f5f8386c53266667a3b3ec708a9cdeba95e0ac12728995aa8c3a11a4ecb3",
+      "size_bytes": 31352
+    },
+    "benchmark_summary.csv": {
+      "sha256": "285dcf9a3f9e02780e18e4ad5c1fad183fd25caac821b5ae9195d3df0f466420",
+      "size_bytes": 1185
+    },
+    "benchmark_summary.json": {
+      "sha256": "a40c32475f6284f48623693ec688cd4dd5e491845c70385d3bc84d501b7e9848",
+      "size_bytes": 1390
+    },
+    "intent_metrics.csv": {
+      "sha256": "4b92ac9f62c7bb79d000c22b77822337b94dbfc1b54e130aefa609449fe8a3f1",
+      "size_bytes": 889
+    },
+    "role_confusion_matrix.csv": {
+      "sha256": "9423f3932b408579ca14710b1e8917c53e6b3211241baf351ea8a7001b202b76",
+      "size_bytes": 1436
+    }
+  },
+  "generated_from_commit": "200bba472b544bdca5f256b628484d82b8d38d99",
+  "ranked_input": "results/benchmark/ranked_targets_benchmark_universe.csv",
+  "validation_level": "Internal rule-based sanity validation"
+}

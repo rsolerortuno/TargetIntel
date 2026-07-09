@@ -1,0 +1,14 @@
+expected_role,IFN-gamma resistance mechanism / biomarker,Treg-suppression marker / possible IO-combination target,anti-PD-1 combination target,antigen-presentation resistance biomarker,immune-context marker,immune-exclusion / stromal-resistance candidate,melanoma plasticity / resistance-associated marker,metabolic immune-suppression target,myeloid/TME anti-PD-1 combination target,tumor-intrinsic driver / biomarker,tumor-intrinsic driver / poor direct therapeutic target,tumor-intrinsic driver / small-molecule target,unclear / low-confidence candidate
+IFN-gamma resistance mechanism / biomarker,5,0,0,0,0,0,0,0,0,0,0,0,0
+Treg-suppression marker / possible IO-combination target,0,3,0,0,0,0,0,0,0,0,0,0,0
+anti-PD-1 combination target,0,0,6,0,0,0,0,0,0,0,0,0,0
+antigen-presentation resistance biomarker,0,0,0,5,0,0,0,0,0,0,0,0,0
+immune-context marker,0,0,0,0,4,0,0,0,0,0,0,0,0
+immune-exclusion / stromal-resistance candidate,0,0,0,0,0,4,0,0,0,0,0,0,0
+melanoma plasticity / resistance-associated marker,0,0,0,0,0,0,3,0,0,0,0,0,0
+metabolic immune-suppression target,0,0,0,0,0,0,0,4,0,0,0,0,0
+myeloid/TME anti-PD-1 combination target,0,0,0,0,0,0,0,0,6,0,0,0,0
+tumor-intrinsic driver / biomarker,0,0,0,0,0,0,0,0,0,3,0,0,0
+tumor-intrinsic driver / poor direct therapeutic target,0,0,0,0,0,0,0,0,0,0,5,0,0
+tumor-intrinsic driver / small-molecule target,0,0,0,0,0,0,0,0,0,0,0,5,0
+unclear / low-confidence candidate,0,0,0,0,0,0,0,0,0,0,0,0,3

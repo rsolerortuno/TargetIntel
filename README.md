@@ -930,6 +930,8 @@ These results demonstrate consistency between the curated reasoning rules and
 the expected therapeutic-intent categories. They do not constitute independent
 clinical validation or evidence of therapeutic efficacy.
 
+A versioned benchmark-output snapshot is available in [`examples/benchmark/`](examples/benchmark/README.md).
+
 ### Run the benchmark
 
 Build the augmented benchmark universe:

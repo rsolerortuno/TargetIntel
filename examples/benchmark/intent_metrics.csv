@@ -1,0 +1,5 @@
+intent,expected_target_count,covered_target_count,coverage,primary_intent_accuracy,acceptable_intent_accuracy,mean_reciprocal_rank_all,mean_reciprocal_rank_covered,mean_rank_covered,mean_rank_shift_covered,mean_expected_intent_score,mean_intent_score_margin,cross_intent_specificity,top_5_hits,top_5_recall_all,top_5_recall_covered,top_10_hits,top_10_recall_all,top_10_recall_covered,top_20_hits,top_20_recall_all,top_20_recall_covered,mean_control_max_score
+antibody_io,19,19,1.0,0.9474,1.0,0.183,0.183,26.7895,43.4,0.6482,0.1808,0.9474,5.0,0.2632,0.2632,10.0,0.5263,0.5263,16.0,0.8421,0.8421,
+biomarker,24,24,1.0,0.9167,1.0,0.1421,0.1421,23.0417,45.3333,0.5404,0.3679,0.9167,5.0,0.2083,0.2083,10.0,0.4167,0.4167,13.0,0.5417,0.5417,
+small_molecule,10,10,1.0,0.8,1.0,0.2823,0.2823,6.4,4.0,0.6427,0.2394,0.8,5.0,0.5,0.5,8.0,0.8,0.8,10.0,1.0,1.0,
+none,3,3,1.0,1.0,1.0,,,,,,,,,,,,,,,,,0.0091
