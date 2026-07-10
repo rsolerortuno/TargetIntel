@@ -2,6 +2,18 @@
 
 All notable changes to TargetIntel-IO are documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- Added the `targetintel` command-line interface.
+- Added `targetintel run` as a single end-to-end command for public-data
+  ingestion, feature construction, therapeutic-intent scoring, hypothesis
+  cards, HTML reports, and summary figures.
+- Added `targetintel run --validate` to additionally execute the internal
+  56-target benchmark and 42-scenario weight-sensitivity analysis.
+- Added pipeline and command-line regression tests.
+
 ## [0.1.2] - 2026-07-10
 
 ### Fixed

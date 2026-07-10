@@ -27,6 +27,9 @@ dependencies = [
 ]
 
 
+[project.scripts]
+targetintel = "targetintel.cli:main"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8,<10",
