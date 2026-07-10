@@ -21,6 +21,14 @@ All notable changes to TargetIntel-IO are documented in this file.
 - Replaced obsolete prototype commands and planned milestones with the implemented package, CLI, outputs, and validation workflow.
 - Added README regression tests for the repository URL, CLI quick start, versioned examples, obsolete content, and document length.
 
+### Removed
+
+- Removed the obsolete pre-package prototype scripts
+  `scripts/01_target_prioritization_mvp.py` and
+  `scripts/02_plot_top_targets.py`.
+- Removed the orphaned root-level `figures/test.png` artifact. Versioned
+  generated figures remain under `examples/figures/`.
+
 ## [0.1.2] - 2026-07-10
 
 ### Fixed
